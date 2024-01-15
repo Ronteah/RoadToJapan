@@ -19,6 +19,7 @@ import Loader from '@/components/shared/Loader';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignInAccount } from '@/lib/react-query/queriesAndMutations';
 import { useUserContext } from '@/context/AuthContext';
+import { CONTACT_EMAIL } from '@/constants';
 
 const SigninForm = () => {
     const { toast } = useToast();
@@ -130,6 +131,12 @@ const SigninForm = () => {
                             className='text-primary-500 text-small-semibold underline ml-2'
                         >
                             Créer un compte
+                        </Link>
+                    </p>
+
+                    <p className='text-primary-500 text-small-semibold underline text-center'>
+                        <Link to={`mailto:${CONTACT_EMAIL}`} title='Contacter'>
+                            Probème de connexion ?
                         </Link>
                     </p>
                 </form>

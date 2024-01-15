@@ -36,3 +36,5 @@ export const xpByLevelMultiplier = 1.1;
 export const MAX_FILE_SIZE = 5;
 
 export const ACCEPTED_IMAGE_TYPES = ['.jpeg', '.jpg', '.png', '.webp'];
+
+export const CONTACT_EMAIL = 'louis.georget@hotmail.fr';

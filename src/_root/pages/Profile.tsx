@@ -118,10 +118,10 @@ const Profile = () => {
                     <div className='flex flex-col justify-center items-center h-full gap-9'>
                         <div className='flex flex-col text-center'>
                             <h2 className='h3-bold md:h2-bold'>
-                                Supprimer votre compte
+                                Désactiver votre compte
                             </h2>
                             <p className='small-medium md:base-regular mt-2'>
-                                Êtes-vous sûr de vouloir supprimer votre compte
+                                Êtes-vous sûr de vouloir désactiver votre compte
                                 utilisateur ?
                             </p>
                         </div>
@@ -137,7 +137,7 @@ const Profile = () => {
                                 className='bg-primary-500 px-5 py-3 rounded-full hover:opacity-65 transition'
                                 onClick={deleteAccount}
                             >
-                                Supprimer
+                                Désactiver
                             </button>
                         </div>
                     </div>
@@ -206,27 +206,48 @@ const Profile = () => {
                                           user!.followers.includes(
                                               currentUser.id
                                           ) ? (
-                                            <Button
-                                                className='flex items-center gap-3 bg-primary-500 hover:opacity-65 w-32 justify-center rounded-lg px-4 py-2 transition'
-                                                onClick={handleFollow}
-                                            >
-                                                <FontAwesomeIcon
-                                                    icon={['fas', 'check']}
-                                                    className='fa-md'
-                                                />
-                                                Suivi
-                                            </Button>
+                                            <div className='flex flex-col'>
+                                                <Button
+                                                    className='flex items-center gap-3 bg-primary-500 hover:opacity-65 w-32 justify-center rounded-lg px-4 py-2 transition'
+                                                    onClick={handleFollow}
+                                                >
+                                                    <FontAwesomeIcon
+                                                        icon={['fas', 'check']}
+                                                        className='fa-md'
+                                                    />
+                                                    Suivi
+                                                </Button>
+                                                {user!.following.includes(
+                                                    currentUser.id
+                                                ) && (
+                                                    <p className='text-center text-sm opacity-35 mt-1'>
+                                                        Vous suit
+                                                    </p>
+                                                )}
+                                            </div>
                                         ) : (
-                                            <Button
-                                                className='flex items-center gap-3 border-2 border-primary-500 hover:opacity-65 w-32 justify-center rounded-lg px-4 py-2 transition'
-                                                onClick={handleFollow}
-                                            >
-                                                <FontAwesomeIcon
-                                                    icon={['fas', 'user-plus']}
-                                                    className='fa-md'
-                                                />
-                                                Suivre
-                                            </Button>
+                                            <div className='flex flex-col'>
+                                                <Button
+                                                    className='flex items-center gap-3 border-2 border-primary-500 hover:opacity-65 w-32 justify-center rounded-lg px-4 py-2 transition'
+                                                    onClick={handleFollow}
+                                                >
+                                                    <FontAwesomeIcon
+                                                        icon={[
+                                                            'fas',
+                                                            'user-plus',
+                                                        ]}
+                                                        className='fa-md'
+                                                    />
+                                                    Suivre
+                                                </Button>
+                                                {user!.following.includes(
+                                                    currentUser.id
+                                                ) && (
+                                                    <p className='text-center text-sm opacity-35 mt-1'>
+                                                        Vous suit
+                                                    </p>
+                                                )}
+                                            </div>
                                         )}
                                     </div>
                                 </div>
@@ -240,7 +261,7 @@ const Profile = () => {
                                 className='text-primary-500 hover:underline'
                                 onClick={() => setIsModalOpened(true)}
                             >
-                                Supprimer mon compte
+                                Désactiver mon compte
                             </Button>
                         </div>
                     )}

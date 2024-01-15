@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { useUserContext } from '@/context/AuthContext';
-import { topbarLinks } from '@/constants';
+import { CONTACT_EMAIL, topbarLinks } from '@/constants';
 import { INavLink } from '@/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
@@ -33,7 +33,7 @@ const Topbar = () => {
                 >
                     <img src='/assets/images/logo.png' alt='logo' width={50} />
                 </Link>
-                <ul className='flex gap-6'>
+                <ul className='flex gap-6 ml-24'>
                     {topbarLinks.map((link: INavLink) => {
                         const isActive = pathname === link.route;
                         const isCreate = link.route === '/create-post';
@@ -74,56 +74,64 @@ const Topbar = () => {
                         </NavLink>
                     </li>
                 </ul>
-                {user.id ? (
-                    <div className='flex items-center'>
-                        <div className='flex items-center w-60 px-5 py-3 bg-dark-3 hover:bg-dark-4 transition rounded-full'>
-                            <Link
-                                to={`/profile/${user.id}`}
-                                className='flex gap-3 items-center'
-                            >
-                                <img
-                                    src={
-                                        user.imageUrl ||
-                                        '/assets/images/profile.png'
-                                    }
-                                    alt='profile picture'
-                                    className='h-10 w-10 rounded-full object-cover'
-                                />
-                                <div className='flex flex-col'>
-                                    <p className='body-bold truncate w-28'>
-                                        {user.name}
-                                    </p>
-                                    <p className='small-regular text-light-3 truncate w-28 mr-12'>
-                                        @{user.username}
-                                    </p>
-                                </div>
-                            </Link>
-                            <Button
-                                variant='ghost'
-                                className='shad-button_ghost hover:opacity-35 p-0 m-0 transition'
-                                onClick={() => signOut()}
+                <div className='flex'>
+                    <Link to={`mailto:${CONTACT_EMAIL}`} title='Contacter'>
+                        <FontAwesomeIcon
+                            icon={['fas', 'envelope']}
+                            className='fa-xl px-6 py-6 mr-5 opacity-35 bg-dark-3 rounded-full hover:opacity-100 transition'
+                        />
+                    </Link>
+                    {user.id ? (
+                        <div className='flex items-center'>
+                            <div className='flex items-center w-60 px-5 py-3 bg-dark-3 hover:bg-dark-4 transition rounded-full'>
+                                <Link
+                                    to={`/profile/${user.id}`}
+                                    className='flex gap-3 items-center'
+                                >
+                                    <img
+                                        src={
+                                            user.imageUrl ||
+                                            '/assets/images/profile.png'
+                                        }
+                                        alt='profile picture'
+                                        className='h-10 w-10 rounded-full object-cover'
+                                    />
+                                    <div className='flex flex-col'>
+                                        <p className='body-bold truncate w-28'>
+                                            {user.name}
+                                        </p>
+                                        <p className='small-regular text-light-3 truncate w-28 mr-12'>
+                                            @{user.username}
+                                        </p>
+                                    </div>
+                                </Link>
+                                <Button
+                                    variant='ghost'
+                                    className='shad-button_ghost hover:opacity-35 p-0 m-0 transition'
+                                    onClick={() => signOut()}
+                                >
+                                    <FontAwesomeIcon
+                                        icon={['fas', 'right-from-bracket']}
+                                        className='fa-xl text-primary-500'
+                                    />
+                                </Button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className='leftsidebar-link bg-primary-500 hover:bg-dark-4 h-14 mt-2'>
+                            <NavLink
+                                to='/sign-in'
+                                className='flex gap-4 justify-center items-center w-52 py-4'
                             >
                                 <FontAwesomeIcon
-                                    icon={['fas', 'right-from-bracket']}
-                                    className='fa-xl text-primary-500'
+                                    icon={['fas', 'right-to-bracket']}
+                                    className='fa-xl'
                                 />
-                            </Button>
+                                Se connecter
+                            </NavLink>
                         </div>
-                    </div>
-                ) : (
-                    <div className='leftsidebar-link bg-primary-500 hover:bg-dark-4'>
-                        <NavLink
-                            to='/sign-in'
-                            className='flex gap-4 justify-center items-center w-52 px-3 py-3'
-                        >
-                            <FontAwesomeIcon
-                                icon={['fas', 'right-to-bracket']}
-                                className='fa-xl'
-                            />
-                            Se connecter
-                        </NavLink>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </>
     );
