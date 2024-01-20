@@ -57,7 +57,7 @@ const Standings = () => {
                 <div className='flex flex-1 flex-col gap-9 w-full'>
                     <div className='flex-start gap-3 justify-start w-full'>
                         <FontAwesomeIcon
-                            icon={['fas', 'medal']}
+                            icon={['fas', 'ranking-star']}
                             className='fa-2xl text-light-3'
                         />
                         <h2 className='h3-bold md:h2-bold text-left w-full'>
@@ -87,24 +87,19 @@ const Standings = () => {
                     ))}
                 </ul>
                 <ul className='mt-12 w-full'>
-                    {users.pages
-                        .filter((page) => page.documents.length > 0)
-                        .map((item) =>
-                            item.documents
-                                .sort((a: any, b: any) => b.xp - a.xp)
-                                .slice(3)
-                                .map((user: any, index: number) => (
-                                    <li
-                                        key={index + 3}
-                                        className='relative w-full h-full mt-8'
-                                    >
-                                        <UserCard
-                                            user={user}
-                                            index={index + 3}
-                                        />
-                                    </li>
-                                ))
-                        )}
+                    {users.pages.map((item) =>
+                        item.documents
+                            .sort((a: any, b: any) => b.xp - a.xp)
+                            .slice(3, 50)
+                            .map((user: any, index: number) => (
+                                <li
+                                    key={index + 3}
+                                    className='relative w-full h-full mt-8'
+                                >
+                                    <UserCard user={user} index={index + 3} />
+                                </li>
+                            ))
+                    )}
                 </ul>
                 {hasNextPage && (
                     <div

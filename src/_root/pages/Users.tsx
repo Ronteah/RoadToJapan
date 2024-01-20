@@ -72,7 +72,7 @@ const Users = () => {
                 <div className='explore-inner_container'>
                     <div className='max-w-5x1 flex-start gap-3 justify-start w-full'>
                         <FontAwesomeIcon
-                            icon={['fas', 'user-group']}
+                            icon={['fas', 'users']}
                             className='fa-2xl text-light-3'
                         />
                         <h2 className='h3-bold md:h2-bold text-left w-full'>

@@ -83,7 +83,7 @@ const Topbar = () => {
                     </Link>
                     {user.id ? (
                         <div className='flex items-center'>
-                            <div className='flex items-center w-60 px-5 py-3 bg-dark-3 hover:bg-dark-4 transition rounded-full'>
+                            <div className='flex items-center w-60 px-4 py-3 bg-dark-3 hover:bg-dark-4 transition rounded-full'>
                                 <Link
                                     to={`/profile/${user.id}`}
                                     className='flex gap-3 items-center'

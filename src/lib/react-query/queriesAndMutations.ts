@@ -11,6 +11,7 @@ import {
     deleteUserAccount,
     getCurrentUser,
     getInfiniteUsers,
+    getInfiniteUsersTraining,
     getTrainingById,
     getUserById,
     getUserTrainings,
@@ -210,6 +211,23 @@ export const useGetUsers = () => {
     return useInfiniteQuery({
         queryKey: [QUERY_KEYS.GET_INFINITE_USERS],
         queryFn: getInfiniteUsers as any,
+        getNextPageParam: (lastPage: any) => {
+            if (lastPage && lastPage.documents.length === 0) {
+                return null;
+            }
+
+            const lastId =
+                lastPage.documents[lastPage.documents.length - 1].$id;
+            return lastId;
+        },
+        initialPageParam: null,
+    });
+};
+
+export const useGetUsersTrainings = () => {
+    return useInfiniteQuery({
+        queryKey: [QUERY_KEYS.GET_INFINITE_USERS_TRAININGS],
+        queryFn: getInfiniteUsersTraining as any,
         getNextPageParam: (lastPage: any) => {
             if (lastPage && lastPage.documents.length === 0) {
                 return null;

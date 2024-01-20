@@ -10,6 +10,7 @@ export enum QUERY_KEYS {
     // TRAINING KEYS
     GET_TRAININGS = 'getTrainings',
     GET_INFINITE_USERS = 'GET_INFINITE_USERS',
+    GET_INFINITE_USERS_TRAININGS = 'GET_INFINITE_USERS_TRAININGS',
     GET_RECENT_TRAININGS = 'getRecentTrainings',
     GET_TRAINING_BY_ID = 'getTrainingById',
     GET_USER_TRAININGS = 'getUserTrainings',

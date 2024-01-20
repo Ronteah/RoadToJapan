@@ -407,6 +407,55 @@ export async function getInfiniteUsers({ pageParam }: { pageParam: number }) {
     }
 }
 
+export async function getInfiniteUsersTraining({
+    pageParam,
+}: {
+    pageParam: number;
+}) {
+    try {
+        const currentUser = await getCurrentUser();
+
+        const following = currentUser?.following;
+
+        if (following.length === 0) {
+            return [];
+        }
+
+        const users = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.userCollectionId,
+            [Query.equal('$id', following)]
+        );
+
+        if (!users) throw Error;
+
+        const queries: any[] = [
+            Query.orderDesc('$createdAt'),
+            Query.limit(10),
+            Query.equal(
+                'creator',
+                users.documents.map((document) => document.$id)
+            ),
+        ];
+
+        if (pageParam) {
+            queries.push(Query.cursorAfter(pageParam.toString()));
+        }
+
+        const trainings = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.trainingCollectionId,
+            queries
+        );
+
+        if (!trainings) throw Error;
+
+        return trainings;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export async function searchUsers(searchTerm: string) {
     try {
         let users = await databases.listDocuments(
