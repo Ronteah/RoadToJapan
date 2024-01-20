@@ -31,7 +31,7 @@ const Topbar = () => {
                     to={'/'}
                     className='flex gap-3 items-center justify-center'
                 >
-                    <img src='/assets/images/logo.png' alt='logo' width={50} />
+                    <img src='/assets/images/logo.png' alt='logo' width={100} />
                 </Link>
                 <ul className='flex gap-6 ml-24'>
                     {topbarLinks.map((link: INavLink) => {

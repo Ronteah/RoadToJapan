@@ -63,13 +63,13 @@ const SigninForm = () => {
     return (
         <Form {...form}>
             <div className='sm:w-420 flex-center flex-col'>
-                <img src='/assets/images/logo.png' alt='logo' width={100} />
+                <img src='/assets/images/logo.png' alt='logo' width={200} />
 
                 <h2 className='h3-bold md:h2-bold pt-5 sm:pt-12'>
                     Connexion à votre compte
                 </h2>
-                <p className='text-light-3 small-medium md:base-regular mt-2'>
-                    Bienvenue ! Connectez-vous pour accéder à R2J.
+                <p className='text-light-3 small-medium md:base-regular text-center mt-2'>
+                    Bienvenue ! Connectez-vous pour accéder à Workouters.
                 </p>
 
                 <form
@@ -136,7 +136,7 @@ const SigninForm = () => {
 
                     <p className='text-primary-500 text-small-semibold underline text-center'>
                         <Link to={`mailto:${CONTACT_EMAIL}`} title='Contacter'>
-                            Probème de connexion ?
+                            Problème de connexion ?
                         </Link>
                     </p>
                 </form>
