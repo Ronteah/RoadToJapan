@@ -31,12 +31,13 @@ const Home = () => {
 
     return (
         <div className='explore-container'>
-            <h1 className='font-bold text-4xl text-start w-full max-w-5xl flex items-center gap-5 mb-14'>
+            <h1 className='font-bold text-4xl text-start w-full max-w-5xl flex items-center gap-5 mb-14 mt-5'>
                 Bonjour {currentUser.name} ! 👋
                 <Link
                     to={'/create'}
                     className='bg-dark-4 px-5 py-3 rounded-full hover:bg-primary-500 transition text-base font-normal'
                 >
+                    <FontAwesomeIcon icon={['fas', 'add']} className='mr-2' />
                     Ajouter un entraînement
                 </Link>
             </h1>

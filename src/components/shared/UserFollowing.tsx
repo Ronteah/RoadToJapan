@@ -20,6 +20,8 @@ const UserFollowing = () => {
         }
     }, [inView]);
 
+    console.log(trainings);
+
     if (!trainings) {
         return (
             <div className='flex justify-center items-center w-full h-96'>
@@ -40,9 +42,9 @@ const UserFollowing = () => {
                     </h2>
                 </div>
             </div>
-            {trainings.pages.length === 0 ? (
-                <div className='flex justify-center items-center w-full h-32'>
-                    Aucune des personnes que vous suivez n'a encore complété
+            {trainings.pages.length <= 1 ? (
+                <div className='flex justify-center items-center w-full h-32 opacity-35'>
+                    Aucune des personnes que vous suivez n'a complété
                     d'entraînement
                 </div>
             ) : (
